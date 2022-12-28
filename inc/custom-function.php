@@ -1088,7 +1088,7 @@ class HeaderMenuV2 extends Walker_Nav_Menu {
     public function start_lvl( &$output, $depth = 0, $args = array() ) {
         $indent = str_repeat("\t", $depth);
         $output .= '<div class="submenu-wrap submenu-lv-'.$depth.'">';
-        $output .= "\n$indent<ul class=\"sub-menu\">\n";
+        $output .= "\n$indent<ul class=\"xxxx sub-menu\">\n";
     }
     public function end_lvl( &$output, $depth = 0, $args = array() ) {
         $indent = str_repeat("\t", $depth);
@@ -1113,23 +1113,26 @@ class HeaderMenuV2 extends Walker_Nav_Menu {
         $id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
  
         $output .= $indent . '<li ' . $id . $class_names . '>';
-        $images = ['gift-4', 'diamond-4', 'wedding-band-3', 'education-1', 'education-2', 'jewellery-4'];
-        // echo '<pre>';
-        // var_dump($classes);
-        // echo '</pre>';
-        foreach($images as $images_item) {
-            if(in_array($images_item, $classes)) {
-                $image_data = get_field($images_item, 'term_1340');// term_20: 20 is id of menu location
+       // $images = ['gift-4', 'diamond-4', 'wedding-band-3', 'education-1', 'education-2', 'jewellery-4', 'aboutus-4'];
+        $images = [
+            'jewellery-4' => 'https://love-and-co.com/ebase-uploads/2022/08/Mobile-Header-790x600px.webp',
+            'diamond-4' => 'https://love-and-co.com/ebase-uploads/2022/01/bespokediamond.jpg',
+            'wedding-band-3' => 'https://love-and-co.com/ebase-uploads/2021/11/DT-WB-1536x635px.jpg',
+            'aboutus-4' => 'https://love-and-co.com/ebase-uploads/2022/06/new_store.jpeg'
+        ];
+
+        foreach($images as $k=>$images_item) {
+            if(in_array($k, $classes)) {
+                $image_data = $images_item;
                 if($image_data) {
                  $output .= '<div class="menu-image-wrap">
                     <a href="'.$item->url.'">
-                     <img src="'.$image_data['url'].'" alt="'.$image_data['alt'].'" />
+                    <img src="'.esc_url($image_data).'" alt="" />
                     </a>
                  </div>';
                 }
-             } 
+            } 
         }
-
  
         $atts           = array();
         $atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';

@@ -229,3 +229,99 @@ add_action( 'init', 'cptui_register_my_taxes_color' );
 
 
 /* emma add color taxonomy */
+/* add by emma jun-17-2022 */
+function cptui_register_my_taxes_design() {
+
+	/**
+	 * Taxonomy: design.
+	 */
+
+	$labels = [
+		"name" => __( "Design", "astra" ),
+		"singular_name" => __( "Design", "astra" ),
+	];
+
+	$args = [
+		"label" => __( "Design", "astra" ),
+		"labels" => $labels,
+		"public" => true,
+		"publicly_queryable" => true,
+		"hierarchical" => true,
+		"show_ui" => true,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"query_var" => true,
+		"rewrite" => [ 'slug' => 'design', 'with_front' => true, ],
+		"show_admin_column" => true,
+		"show_in_rest" => true,
+		"rest_base" => "design",
+		"rest_controller_class" => "WP_REST_Terms_Controller",
+		"show_in_quick_edit" => true,
+		];
+	register_taxonomy( "design", [ "product" ], $args );
+}
+add_action( 'init', 'cptui_register_my_taxes_design' );
+/////////////////////////////////////////////////////////
+function cptui_register_my_taxes_Price() {
+
+	/**
+	 * Taxonomy: Price.
+	 */
+
+	$labels = [
+		"name" => __( "Price", "astra" ),
+		"singular_name" => __( "Price", "astra" ),
+	];
+
+	$args = [
+		"label" => __( "Price", "astra" ),
+		"labels" => $labels,
+		"public" => true,
+		"publicly_queryable" => true,
+		"hierarchical" => true,
+		"show_ui" => true,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"query_var" => true,
+		"rewrite" => [ 'slug' => 'price', 'with_front' => true, ],
+		"show_admin_column" => true,
+		"show_in_rest" => true,
+		"rest_base" => "Price",
+		"rest_controller_class" => "WP_REST_Terms_Controller",
+		"show_in_quick_edit" => true,
+		];
+	register_taxonomy( "price", [ "product" ], $args );
+}
+add_action( 'init', 'cptui_register_my_taxes_Price' );
+///////////////////////////////////////////////////////////
+function cptui_register_my_taxes_diamond_shape() {
+
+	/**
+	 * Taxonomy: Diamond Shape.
+	 */
+
+	$labels = [
+		"name" => __( "Diamond Shape", "astra" ),
+		"singular_name" => __( "Diamond Shape", "astra" ),
+	];
+
+	$args = [
+		"label" => __( "Diamond Shape", "astra" ),
+		"labels" => $labels,
+		"public" => true,
+		"publicly_queryable" => true,
+		"hierarchical" => true,
+		"show_ui" => true,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"query_var" => true,
+		"rewrite" => [ 'slug' => 'diamond_shape', 'with_front' => true, ],
+		"show_admin_column" => true,
+		"show_in_rest" => true,
+		"rest_base" => "Diamond Shape",
+		"rest_controller_class" => "WP_REST_Terms_Controller",
+		"show_in_quick_edit" => true,
+		];
+	register_taxonomy( "diamond-shape", [ "product" ], $args );
+}
+add_action( 'init', 'cptui_register_my_taxes_diamond_shape' );

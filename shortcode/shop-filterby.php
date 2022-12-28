@@ -9,13 +9,33 @@ $type = get_field("template",$id)?? 'default';
 <div class="filterByWrap filterByWrapShop">
   <div class="filterByInner">
         <div class="filterBy_box1">
-          <div class="filterByTitle">Filter By</div>
+        <div class="filterByTitle">Filter By: 
+            <!-- <div class="filterByBoxes filterByBoxes_resetBtn">
+              <button onclick="FWP.reset()">Clear Filters</button>
+            </div> -->
+          </div>
           <div class="filterBoxesWrap">
+            <?php if( ! empty(alt_get_count_tax('product_cat')) ) { ?>
             <div class="filterByBoxes"><?php echo do_shortcode( '[facetwp facet="product_categories"]' ); ?></div>
+            <?php }
+            if( ! empty(alt_get_count_tax('designer_collections')) ) { ?>
             <div class="filterByBoxes"><?php echo do_shortcode( '[facetwp facet="designer_collections"]' ); ?></div>
+            <?php }
+            if( ! empty(alt_get_count_tax('material')) ) { ?>
             <div class="filterByBoxes"><?php echo do_shortcode( '[facetwp facet="material"]' ); ?></div>
-            <div class="filterByBoxes"><?php echo do_shortcode( '[facetwp facet="colour"]' ); ?></div>
+            <?php }
+            if( ! empty(alt_get_count_tax('colour')) ) { ?>
+              <div class="filterByBoxes"><?php echo do_shortcode( '[facetwp facet="colour"]' ); ?></div>
+            <?php }
+            if( ! empty(alt_get_count_tax('occasions')) ) { ?>
             <div class="filterByBoxes"><?php echo do_shortcode( '[facetwp facet="occasions"]' ); ?></div>
+            <?php }
+            if( ! empty(alt_get_count_tax('pa_ring-size')) ) { ?>
+              <div class="filterByBoxes"><?php echo do_shortcode( '[facetwp facet="ring_size"]' ); ?></div>
+            <?php }
+            if( ! empty(alt_get_count_tax('pa_carat-weight')) ) { ?>
+            <div class="filterByBoxes"><?php echo do_shortcode( '[facetwp facet="carat_weight"]' ); ?></div>
+            <?php }?>
             <div class="filterByBoxes">
               <div class="filterBy_label">Price</div>
               <div class="filterBy_lists"><?php echo do_shortcode( '[facetwp facet="product_price"]' ); ?></div>
@@ -37,6 +57,11 @@ $type = get_field("template",$id)?? 'default';
         </div>
         
   </div>
+  <!-- sorby -->
+  <div class="dht-sortby"> 
+    <?php $catalog_orderby_options    =  woocommerce_catalog_ordering() ; ?>
+  </div>
+   <!-- end sorby -->
 </div>
 <script>
   jQuery(document).ready(function($) {

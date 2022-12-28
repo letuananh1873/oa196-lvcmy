@@ -22,8 +22,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $product;
 ?>
 
+<?php do_action('alt_shop_item_swatches', $product);?>
+
 <?php if ( $price_html = $product->get_price_html() ) : ?>
 	<span class="price"><?php echo $price_html; ?></span>
+<?php else:?>
+	<span class="price">&nbsp;</span>
 <?php endif; ?>
 
 <div class="list_viewmoreWrap">
