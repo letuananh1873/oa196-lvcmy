@@ -1,0 +1,6 @@
+{
+    "name": "hoang/import-products",
+    "require": {
+        "automattic/woocommerce": "^3.0"
+    }
+}

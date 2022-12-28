@@ -1,0 +1,24 @@
+.acf-postbox:hover>.hndle .acf-hndle-cog {
+	display: none !important;
+}
+
+.media-icon img[src$=".svg"], img[src$=".svg"].attachment-post-thumbnail {
+  width: 100% !important;
+  height: auto !important;
+}
+.yith-plugin-fw-banner,
+#info_box, .glideffxf_related, .glideffxf_upsells, li#menu-posts,
+li#toplevel_page_wc-admin-path--marketing{
+    display:none;
+}
+.list_centerstone {
+	margin: 0;
+	padding: 0 0 0 5px;
+}
+.list_centerstone li {
+	display: inline-block;
+	margin-right: 5px;
+}
+.list_centerstone li strong {
+	display: block;
+}

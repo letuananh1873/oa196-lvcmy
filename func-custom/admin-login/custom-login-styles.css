@@ -1,0 +1,196 @@
+a,
+button,
+img,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+a:hover,
+a:active,
+a:focus,
+div:hover,
+div:active,
+div:focus,
+input:hover,
+input:active,
+input:focus,
+textarea:hover,
+textarea:active,
+textarea:focus,
+li:hover,
+li:active,
+li:focus,
+button:hover,
+button:active,
+button:focus,
+img:focus {
+    outline: 0 !important;
+}
+.login #login {
+	width: 420px;
+    position: relative;
+}
+
+.login form {
+	background:transparent!important;
+}
+
+.login #login form .input, .login #login input[type=text] {
+    color: #6f6f6f;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 25px;
+    padding: 11px 10px 13px;
+}
+.login #login form .input#user_login {
+	margin-bottom: 0;
+}
+.login #login .wp-core-ui .button-primary {
+	    background: #d54741;
+	    border-color: #d54741;
+	    -webkit-box-shadow: 0 1px 0 #d54741;
+	    box-shadow: 0 1px 0 #d54741;
+	    color: #fff;
+	    text-decoration: none;
+	    text-shadow: 0 -1px 1px #d54741, 1px 0 1px #d54741, 0 1px 1px #d54741, -1px 0 1px #d54741;
+}
+.login #login .button-primary {
+    float: none;
+    width: 100%;
+    border-radius: 15px;
+    background: #d54741;
+    border-color: #d54741;
+    color: #fff;
+    text-shadow: 0 0 0 #fff;
+    height: 45px;
+    border-radius: 25px;
+    margin-bottom: 15px;
+}
+.login #login form {
+	-webkit-box-shadow: 0 0 0 rgba(0,0,0,.13);
+    box-shadow: 0 0 0 rgba(0,0,0,.13);
+    margin-top: 0px;
+    padding-bottom: 15px;
+    border: none;
+}
+
+.wp-core-ui.login #login #rememberme /*For wp-admin*/{
+    position: absolute; 
+    bottom: -4px;
+    left: 1px;
+}
+body.login {
+	background: transparent;
+}
+body.login div#login h1 a {
+	padding-bottom: 0;
+}
+body.login div#login h1 a img {
+    width: 160px;
+    height: 160px;
+}
+.login #login h1 a {
+	/* line-height: 4.3em; */
+	box-shadow: 0 0 0 #fff;
+	-webkit-box-shadow: 0 0 0 #fff;
+}
+.login #login .message {
+	display: none;
+}
+.login #login #nav {
+	float: right;
+	margin: 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.login #login #nav a {
+	color: #121212;
+}
+.login #login #rememberme {
+	border-radius: 4px;
+}
+.login #login {
+    padding: 10% 0 0;
+}
+.login h1 a {
+    text-indent: unset !important;
+}
+.designby {
+	float: right;
+	padding-right: 45px;
+}
+.designby p {
+	color: #9f9f9f;
+    font-size: 14px;
+}
+.designby p a {
+	padding-left: 20px;
+}
+#backtoblog {
+	float: left;
+    margin-top: 82px;
+    position: absolute;
+    left: -100%;
+}
+.login #login form .forgetmenot label {
+	font-size: 13px;
+	color: #121212;
+    position: absolute;
+    bottom: 3px;
+}
+.login #login label {
+    color: transparent;
+    line-height: 0px;
+}
+
+.login .privacy-policy-page-link {
+    margin: unset;
+}
+
+@media (max-width: 768px) {
+    #backtoblog {
+        left: -40%;
+    }
+    #backtoblog {
+        position: relative;
+        left: 0;
+    }
+}
+@media (max-width: 667px) {
+    #backtoblog {
+        left: -20%;
+    }
+    .login #login .button-primary {
+        margin-bottom: 25px;
+    }
+    .login #login #nav {
+        bottom: 6px;
+    }
+    /* .login #login h1 a {
+        line-height: 6.3em
+    } */
+}
+@media (max-width: 480px) {
+    .login #login {
+        width: 320px;
+    }
+    #backtoblog {
+        left: 0;
+        margin-top: 25px;
+    }
+    .designby {
+        float: none;
+        text-align: center;
+        padding-right: 0;
+        margin-top: 65px;
+    }
+}

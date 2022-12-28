@@ -1,0 +1,4 @@
+Hiding
+wholesale premium -> /plugins/woocommerce-wholesale-prices-premium/includes/class-wwpp-settings.php
+yith-reward-premium ->/ plugins/yith-woocommerce-points-and-rewards-premium/includes/admin/yith-wc-points-rewards-customers-view.php
+elementor pro minicart-> /plugins/elementor-pro/modules/woocommerce/wc-templates/cart/mini-cart.php

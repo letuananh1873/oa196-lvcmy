@@ -1,0 +1,69 @@
+<?php
+/**
+ * Import and export product hover thumbnail  
+*/
+class IAEProductHoverThumbnail {
+
+    function __construct() {
+        add_filter( 'woocommerce_product_export_product_default_columns', array($this, 'add_export_column') );
+        add_filter( 'woocommerce_product_export_product_column_hover_image', array($this, 'woocommerce_product_export_product_column_hover_image'), 10, 2 );
+        add_filter( 'woocommerce_csv_product_import_mapping_options', array($this, 'add_column_to_product_importer') );
+        add_filter( 'woocommerce_csv_product_import_mapping_default_columns',array($this, 'add_column_to_product_mapping_screen') );
+        add_filter( 'woocommerce_product_import_pre_insert_product_object', array($this, 'process_import'), 10, 2 );
+
+    }
+    
+    // Add two export columns to the csv file
+    public function add_export_column($columns) {
+        $columns['hover_image'] = 'Hover Image Url';
+        return $columns;
+    }
+
+    // Set the value of the Hover thumbnail column
+    public function woocommerce_product_export_product_column_hover_image($value, $product) {
+        $product_gallery = $product->get_gallery_image_ids();
+        $first_gallery_id = $product_gallery[0];
+
+        $first_gallery_url = wp_get_attachment_url($first_gallery_id);
+        if(!$first_gallery_url) return '';
+        return $first_gallery_url;
+    }
+
+    // Create fields to import
+    public function add_column_to_product_importer( $options ) {
+
+        $options['hover_image'] = 'Hover Image';
+        
+        return $options;
+    }
+
+    // Set default selection for the column of the csv file and the field in the inport page
+    public function add_column_to_product_mapping_screen( $columns ) {
+	
+        $columns['hover image url'] = 'hover_image';
+        $columns['Hover Image Url'] = 'hover_image';
+        return $columns;
+    }
+
+    function process_import( $object, $data ) {
+
+        if ( !empty( $data['hover_image'] ) ) {
+            $product_gallery_ids = $object->get_gallery_image_ids();
+            $image_id = attachment_url_to_postid(str_replace('ebase-uploads', 'wp-content/uploads', $data['hover_image']));
+            $new_product_gallery_ids = array();
+            array_push($new_product_gallery_ids, $image_id);
+            foreach($product_gallery_ids as $key => $itemmm) {
+                if($key != 0) { 
+                    array_push($new_product_gallery_ids, $itemmm);
+                }
+            }
+
+            $object->set_gallery_image_ids($new_product_gallery_ids);
+        }
+
+        return $object;
+    }
+  }
+  
+new IAEProductHoverThumbnail;
+

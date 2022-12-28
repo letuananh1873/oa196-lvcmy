@@ -1,0 +1,195 @@
+.woocommerce-wishlist header .entry-title {
+  font-family: "Perpetua";
+  padding: 0 20px;
+}
+
+.woocommerce-wishlist .wishlist-title.wishlist-title-with-form {
+  display: none;
+}
+
+.woocommerce-wishlist .not-logged-in {
+  padding: 0 20px;
+}
+
+.woocommerce-wishlist .not-logged-in a {
+  text-decoration: underline;
+}
+
+.woocommerce-wishlist .seperator {
+  height: 1px;
+  width: 100%;
+  margin: 50px 0;
+  background-color: #ECECEC;
+}
+
+.woocommerce-wishlist .wishlist_table.modern_grid.customize li {
+  width: 25%;
+}
+
+@media (max-width: 991px) {
+  .woocommerce-wishlist .wishlist_table.modern_grid.customize li {
+    width: 33.33%;
+  }
+}
+
+@media (max-width: 767px) {
+  .woocommerce-wishlist .wishlist_table.modern_grid.customize li {
+    width: 50%;
+  }
+}
+
+.woocommerce-wishlist .wishlist_table.modern_grid.customize .item-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.woocommerce-wishlist .wishlist_table.modern_grid.customize .item-wrapper .product-thumbnail {
+  width: 100%;
+}
+
+.woocommerce-wishlist .wishlist_table.modern_grid.customize .item-wrapper .product-thumbnail img {
+  width: 100%;
+}
+
+.woocommerce-wishlist .wishlist_table.modern_grid.customize .item-wrapper .item-details {
+  width: 100%;
+}
+
+.woocommerce-wishlist .wishlist_table.modern_grid.customize .item-wrapper .item-details:before {
+  border-width: 0px;
+}
+
+@media (max-width: 767px) {
+  .woocommerce-wishlist .wishlist_table.modern_grid.customize .item-wrapper .item-details .item-details-wrapper {
+    padding: 10px 5px;
+  }
+}
+
+.woocommerce-wishlist .wishlist_table.modern_grid.customize .item-wrapper .item-details .item-details-wrapper .product-name {
+  font-family: "Perpetua";
+  font-size: 20px;
+  text-align: center;
+}
+
+.woocommerce-wishlist .wishlist_table.modern_grid.customize .item-wrapper .item-details .item-details-wrapper .product-price .value {
+  font-size: 16px;
+  text-align: center;
+  color: #757575;
+}
+
+.woocommerce-wishlist .wishlist_table.modern_grid.customize .item-wrapper .item-details .item-details-wrapper .button-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.woocommerce-wishlist .wishlist_table.modern_grid.customize .item-wrapper .item-details .item-details-wrapper .button-container .product-add-to-cart {
+  margin-bottom: 0px;
+  flex: 1;
+}
+
+.woocommerce-wishlist .wishlist_table.modern_grid.customize .item-wrapper .item-details .item-details-wrapper .button-container .product-add-to-cart a {
+  width: 100%;
+  margin: 10px 0 !important;
+  padding: 10px !important;
+  background-color: #C9E4BB;
+  color: #000000;
+  text-transform: uppercase;
+  font-size: 13px;
+  border-radius: 0px;
+  font-weight: normal !important;
+}
+
+.woocommerce-wishlist .wishlist_table.modern_grid.customize .item-wrapper .item-details .item-details-wrapper .button-container .product-add-to-cart a:hover {
+  background-color: #DDF8C9 !important;
+}
+
+.woocommerce-wishlist .wishlist_table.modern_grid.customize .item-wrapper .item-details .item-details-wrapper .button-container .product-remove {
+  margin-left: 10px;
+}
+
+@media (min-width: 992px) {
+  .woocommerce-cart .woocommerce .woocommerce-cart-form {
+    vertical-align: top;
+    width: 69%;
+    display: inline-block;
+    padding-right: 20px;
+  }
+  .woocommerce-cart .woocommerce .woocommerce-cart-form .thead {
+    display: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .woocommerce-cart .woocommerce .cart-collaterals {
+    width: 30%;
+    display: inline-block;
+  }
+}
+
+.woocommerce-cart .woocommerce .cart-collaterals .cart_totals {
+  float: none;
+  width: 100%;
+}
+
+.woocommerce-checkout #order_review {
+  padding: 0 !important;
+}
+
+.woocommerce-checkout #order_review .main-order-review {
+  padding: 0 2em;
+}
+
+.woocommerce-checkout #order_review .shipping-notice {
+  padding: 3em;
+  background-color: black;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+}
+
+.woocommerce-checkout .woocommerce-form-coupon-toggle {
+  display: none;
+}
+
+.woocommerce-checkout th.product-name, .woocommerce-checkout th.product-total, .woocommerce-checkout .cart-subtotal th, .woocommerce-checkout .shipping th, .woocommerce-checkout .order-total th {
+  font-family: "Perpetua";
+}
+
+.woocommerce-checkout .cart-coupon .form-container {
+  display: flex;
+}
+
+.woocommerce-checkout .cart-coupon .form-container input {
+  font-family: "Perpetua";
+}
+
+.woocommerce-checkout .cart-coupon .form-container .form-row {
+  width: auto;
+}
+
+.woocommerce-checkout .cart-coupon .form-container .form-row.form-row-first {
+  flex: 1;
+}
+
+.woocommerce-checkout .cart-coupon .form-container .form-row button {
+  padding: 0px;
+  height: 38px;
+  width: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px;
+}
+
+.woocommerce-checkout .cart-coupon .description {
+  margin-top: 20px;
+  margin-bottom: 0px;
+  color: #666666;
+  font-size: 12px;
+  font-family: 'CenturyGothic';
+}
+
+.product-remove a:hover {
+  color: #666666 !important;
+}

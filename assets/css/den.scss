@@ -1,0 +1,178 @@
+.woocommerce-wishlist{
+    header .entry-title{
+        font-family: "Perpetua";
+        padding: 0 20px;
+    }
+    .wishlist-title.wishlist-title-with-form{
+        display: none;
+    }
+    .not-logged-in{
+        padding: 0 20px;
+        a{
+            text-decoration: underline;
+        }
+    }
+    .seperator{
+        height: 1px;
+        width: 100%;
+        margin: 50px 0;
+        background-color: #ECECEC;
+    }
+    .wishlist_table.modern_grid.customize{
+        li{
+            width: 25%;
+            @media (max-width: 991px) { 
+                width: 33.33%;
+             }
+             @media (max-width: 767px) { 
+                width: 50%;
+             }
+        }
+        .item-wrapper{
+            display: flex;
+            flex-direction: column;
+            .product-thumbnail{
+                width: 100%;
+                img{
+                    width: 100%;
+                }
+            }
+            .item-details{
+                width: 100%;
+                &:before{
+                    border-width: 0px;
+                }
+                .item-details-wrapper{
+                    @media (max-width: 767px) { 
+                        padding: 10px 5px;
+                     }
+                    .product-name{
+                        font-family: "Perpetua";
+                        font-size: 20px;
+                        text-align: center;
+                    }
+                    .product-price{
+                        .value{
+                            font-size: 16px;
+                            text-align: center;
+                            color: #757575;
+                        }
+                    }
+                    .button-container{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        .product-add-to-cart{
+                            margin-bottom: 0px;
+                            flex:1;
+                            a{
+                                width: 100%;
+                                margin: 10px 0 !important;
+                                padding: 10px !important;
+                                background-color: #C9E4BB;
+                                color: #000000;
+                                text-transform: uppercase;
+                                font-size: 13px;
+                                border-radius: 0px;
+                                font-weight: normal !important;
+                                &:hover {
+                                    background-color: #DDF8C9 !important;
+                                }
+                            }
+                        }
+                        .product-remove{
+                            margin-left: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }  
+}
+
+    .woocommerce-cart{
+        .woocommerce{
+            .woocommerce-cart-form{
+                @media (min-width: 992px) { 
+                    vertical-align: top;
+                    width: 69%;
+                    display: inline-block;
+                    padding-right: 20px;
+                    .thead{
+                        display: none;
+                    }
+                }
+            }
+            .cart-collaterals{
+                @media (min-width: 992px) { 
+                    width: 30%;
+                    display: inline-block;
+                    }
+                    .cart_totals{
+                        float: none;
+                        width: 100%;
+                    }
+            }
+        }
+    }
+
+
+.woocommerce-checkout{
+    #order_review{
+        padding: 0 !important;
+        .main-order-review{
+            padding: 0 2em;
+        }
+        .shipping-notice{
+            padding: 3em;
+            background-color: black;
+            color: white;
+            font-size: 14px;
+            text-align: center;
+        }
+    }
+    
+    .woocommerce-form-coupon-toggle{
+        display: none;
+    }
+    th.product-name,th.product-total,.cart-subtotal th,.shipping th,.order-total th{
+        font-family: "Perpetua";
+    }
+    .cart-coupon{
+        .form-container{
+            display: flex;
+            input{
+                font-family: "Perpetua";
+            }
+            .form-row{
+                width: auto;
+                &.form-row-first{
+                    flex:1;
+                }
+                button{
+                    padding: 0px;
+                    height: 38px;
+                    width: 38px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 0px;
+                }
+            }
+        }
+        .description{
+            margin-top: 20px;
+            margin-bottom: 0px;
+            color: #666666;
+            font-size: 12px;
+            font-family: 'CenturyGothic';
+        }
+    }
+}
+
+
+.product-remove a {
+    &:hover {
+        color: #666666 !important;
+    }
+}

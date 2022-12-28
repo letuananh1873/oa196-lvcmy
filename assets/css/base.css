@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:400,600|Roboto:400,500");
+/*------------------------------------------
+--------------------- media query screen size---------------------
+------------------------------------------*/
+a {
+  outline: 0 !important;
+}
+
+i.yith-wcwl-icon.fa,
+i.yith-wcwl-icon.fa,
+.yith-wcwl-share i.fa {
+  font: normal normal normal 14px/1 'FontAwesome';
+}
+
+.close-mobile-toggle-sidebar,
+.show-mobile-toggle-sidebar {
+  display: none;
+}
+
+.wishlist_table.mobile {
+  background: #fff;
+  padding: 20px;
+}
+
+.wishlist_table.mobile .additional-info-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.wishlist_table.mobile .additional-info-wrapper .additional-info {
+  width: 40%;
+}
+
+.wishlist_table.mobile li {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+#back-to-top {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 9999;
+  width: 40px;
+  height: 40px;
+  font: normal normal normal 14px/1 FontAwesome;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 40px;
+  background: #000000;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  border: 0;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  opacity: 0;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+#back-to-top:hover {
+  background: #166e89;
+}
+
+#back-to-top.show {
+  opacity: 1;
+}
+
+.categories_images_banner.first_banner {
+  grid-column: 1 / span 3;
+  grid-row: 3 / span 2;
+}
+
+@media (max-width: 1024px) {
+  .categories_images_banner.first_banner {
+    grid-column: 1 / span 2;
+    grid-row: 3 / span 1;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .categories_images_banner.first_banner {
+    grid-column: 1 / span 2;
+    grid-row: 3 / span 2;
+  }
+}
+
+.categories_images_banner.second_banner {
+  grid-column: 2 / span 3;
+  grid-row: 6 / span 2;
+}
+
+@media (max-width: 1024px) {
+  .categories_images_banner.second_banner {
+    grid-column: 1 / span 2;
+    grid-row: 9 / span 1;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .categories_images_banner.second_banner {
+    grid-column: 1 / span 2;
+    grid-row: 9 / span 2;
+  }
+}
+
+.categories_images_banner .background-image {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: baseline;
+}
+
+.categories_images_banner .text-box {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 34px;
+  color: #fff;
+  font-family: 'Perpetua';
+}
+
+.categories_images_banner .button-box {
+  color: #fff;
+  border: 1px solid #FFFFFF;
+  font-family: 'Century Gothic';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  margin-top: 15px;
+  padding: 13px 10px;
+}
+
+@media (max-width: 768px) {
+  .yith_wcwl_wishlist_footer {
+    display: flex;
+    flex-direction: column;
+  }
+  .mobile-toggle-sidebar {
+    position: fixed;
+    z-index: 99;
+    background: #fff;
+    max-width: 300px;
+    top: 0;
+    left: -300px;
+    height: 100%;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: all ease-in-out .2s;
+  }
+  .mobile-toggle-sidebar.show {
+    left: 0;
+  }
+  .close-mobile-toggle-sidebar {
+    display: inline-block;
+    padding: 10px;
+    height: auto;
+    line-height: 1;
+    font-size: 20px;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    top: 0;
+  }
+  .show-mobile-toggle-sidebar {
+    display: inline-block;
+    padding: 10px;
+    height: auto;
+    line-height: 1;
+    font-size: 20px;
+    position: fixed;
+    left: 0;
+    top: 30%;
+    background: #fff;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1) !important;
+    transition: all ease-in-out .2s;
+  }
+  .show-mobile-toggle-sidebar.hide {
+    left: -40px;
+  }
+}
+
+@media (max-width: 544px) {
+  .woocommerce #content table.cart td.actions .button,
+  .woocommerce table.cart td.actions .button,
+  .woocommerce-page #content table.cart td.actions .button,
+  .woocommerce-page table.cart td.actions .button {
+    margin-left: 0;
+  }
+  .woocommerce #content table.cart td.actions .button,
+  .woocommerce table.cart td.actions .button,
+  .woocommerce-page #content table.cart td.actions .button,
+  .woocommerce-page table.cart td.actions .button {
+    border-width: 0;
+  }
+}
