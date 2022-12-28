@@ -95,8 +95,11 @@ function get_id_thumbnail($product_id) {
 }
 
 function get_meta_product_child($product_id,$_metal_type,$_casing,$_dianmond_shapes,$_diamond_type) {	
-        $price_field = get_field('price_field')??'';        
-        $product_price_html = !empty($price_field) ? '$'.number_format($price_field):'';
+        $price_field = get_field('price_field')??'';      
+		if (!empty($price_field)) {
+			$price_field = $price_field * 3.1;
+		} 
+        $product_price_html = !empty($price_field) ? 'RM'.number_format($price_field):'';
         $product_cuts = get_field('attribute_cut',$product_id)??array();        
         $product_url = get_permalink( $product_id ); 
         $class = get_slug_term_in_product($product_id,'designer_collections');
@@ -382,8 +385,8 @@ function get_prefix_block() {
 function lvc_banner($queried_object) {
 	ob_start();
 	if( get_field('lvc_banner',$queried_object) ): ?>
-        <div class="proudct_overview_top_banner diamon-functions">
-            <div class="top_banner_bg"><img<?php echo alt_size_img(get_field('lvc_banner', $queried_object)); ?> ></div>
+        <div class="proudct_overview_top_banner">
+            <div class="top_banner_bg"><img src="<?php the_field('lvc_banner', $queried_object); ?>"></div>
             <div class="top_banner_textBox" style="align-items: <?php
                     if( get_field('lvc_text_box_vertical_alignment', $queried_object) == 'Top' ) { 
                         echo "flex-start";
@@ -403,7 +406,7 @@ function lvc_banner($queried_object) {
                 ?> ;">
                 <div class="textbox_moving">
                     <?php if( get_field('lvc_banner_title_image', $queried_object) ) { ?>
-                        <div class="lvc_title_img"><img<?php echo alt_size_img(get_field('lvc_banner_title_image', $queried_object)); ?>></div>
+                        <div class="lvc_title_img"><img src="<?php the_field('lvc_banner_title_image', $queried_object); ?>"></div>
                     <?php }  ?>
                     <?php if( get_field('lvc_banner_title_text', $queried_object) ) { ?>
                         <h1 class="lvc_title_text" style="color: <?php the_field('lvc_banner_title_color'); ?> !important; " ><?php the_field('lvc_banner_title_text', $queried_object); ?></h1>
@@ -427,7 +430,7 @@ function lvc_banner($queried_object) {
                     <div class="lvc_title_img_sp"><img src="<?php the_field('lvc_banner_title_image', $queried_object); ?>"></div>
                 <?php }  ?>
                 <?php if( get_field('lvc_banner_title_text', $queried_object) ) { ?>
-                    <h1 class="lvc_title_text_sp alt-listing-heading"><?php the_field('lvc_banner_title_text', $queried_object); ?></h1>
+                    <h1 class="lvc_title_text_sp"><?php the_field('lvc_banner_title_text', $queried_object); ?></h1>
                 <?php }  ?>  
                 <div class="lvc_banner_desc"><?php the_field('lvc_banner_description', $queried_object); ?></div>
 				<?php 
@@ -436,7 +439,6 @@ function lvc_banner($queried_object) {
 				?>
 				<div class="lvc_banner_desc lvc_banner_desc-mb"><?php echo $mobile_desc; ?></div>
 				<?php // End #92755 ?>
-				<?php do_action('shop_before_heading');?>
             </div>
         </div>
 
@@ -466,7 +468,7 @@ function return_tax_query_diamond($filters) {
 		array(
 			'taxonomy' => 'product_cat',
 			'field'    => 'slug',
-			'terms'    => 'create-engagement-rings',
+			'terms'    => 'engagement-rings',
 		)
 	);
 	
@@ -486,16 +488,18 @@ function return_tax_query_diamond($filters) {
 
 function get_parents_engagement() {
     $args = array(
-        'category' => array( 'create-engagement-rings' ),
+        'category' => array( 'engagement-rings' ),
         'return' => 'ids',
         'status' => 'publish',
-        'is_parent' => 1,
+        'is_parent' => '1',
         'limit' => -1,
+		
     );
     $products = wc_get_products( $args );    
     return $products;
 }
 function products_diamond_variation($str_filter,$sortby,$paged,$posts_per_page,$parent_product) {
+	if (!empty($parent_product)){
 	//var_dump($str_filter);
 	$paged = $paged ??get_query_var('paged') ;
 	//pa_shapes=round&pa_metal-type=rose-gold
@@ -554,6 +558,7 @@ if (!empty($str_filter)) {
 $query = new WP_Query( $args);
 //var_dump($query->query);
 return $query;
+	} else return '';
 }
 // end function list_product()
 
@@ -763,7 +768,7 @@ function diamond_custom_variable($attributes,$product,$attribute_name,$class_chi
 }
 
 function oa_dianmon_css() {
-	if(is_tax('product_cat','create-engagement-rings') || is_product() || is_page('select-diamond') || is_tax('designer_collections')){
+	if(is_tax('product_cat','engagement-rings') || is_product() || is_page('select-diamond') || is_tax('designer_collections')){
 		wp_enqueue_style('dianmond-css', get_template_directory_uri() . '/func-custom/dianmond/diamond.css',strtotime('now'),true);		
 	}	
 	if(is_page('select-diamond')){	
@@ -778,7 +783,7 @@ function oa_dianmon_js() {
 		wp_enqueue_script( 'dianmond-js-lottie','https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.5.3/lottie.js', array(), date('ymdhsi'), true );		
 		wp_enqueue_script( 'dianmond-js-mode.pkgd', get_template_directory_uri() . '/assets/js/packery-mode.pkgd.min.js', array(), date('ymdhsi'), true );	
 	}
-	if(is_tax('product_cat','create-engagement-rings')|| is_product() || is_page('select-diamond') || is_tax('designer_collections') ){
+	if(is_tax('product_cat','engagement-rings')|| is_product() || is_page('select-diamond') || is_tax('designer_collections') ){
 		wp_enqueue_script( 'dianmond-js', get_template_directory_uri() . '/func-custom/dianmond/dianmond-js.js', array(), date('ymdhsi'), true );
 		wp_localize_script( 'dianmond-js', 'dianmond_params',
 			array(
@@ -793,7 +798,7 @@ function admin_order_list_top_bar_button( $which ) {
     global $typenow;
     $engagement_rings = isset($_GET['product_cat']) ? $_GET['product_cat'] : '';
 
-    if ( 'product' === $typenow && 'top' === $which && $engagement_rings == 'create-engagement-rings') {
+    if ( 'product' === $typenow && 'top' === $which && $engagement_rings == 'engagement-rings') {
     	
         ?>
         <div class="alignleft actions custom">
@@ -876,7 +881,7 @@ function update_engagement_rings() {
 		'paginate' 	=> true,
 		'limit' 	=> 1,
 		'status' 	=> array('publish'),
-		'category' 	=> array('create-engagement-rings'),
+		'category' 	=> array('engagement-rings'),
 		'visibility' => 'visible',  
 		'paged' 	=> $page,  
 	);
@@ -894,7 +899,7 @@ function update_engagement_rings() {
 					'status' => array('publish'),
 					'exclude' => array($product_id),
 					'like_name' => $tittle,
-					'category' => array('create-engagement-rings'),
+					'category' => array('engagement-rings'),
 				);
 				$products_kids = wc_get_products( $args_kid );
 				if (count($products_kids) > 0):
@@ -1005,7 +1010,7 @@ function attribute_diamond_child_default($product_id) {
 function custom_nav($the_query,$a,$current_page) {
   $current_page = $current_page ? $current_page : max( 1, get_query_var('paged') );
   $big = 999999999;
-  $base2 = home_url( '/category/create-engagement-rings/page/999999999' );
+  $base2 = home_url( '/category/engagement-rings/page/999999999' );
   $base = str_replace( $big, '%#%', esc_url( $base2 ) );
  
   $rs_paginate_links = paginate_links( array(
@@ -1158,13 +1163,17 @@ function variation_product_html($variation) {
 					$image = $parent_product->get_image( 'woocommerce_thumbnail', array(), '' );
 				}
 			}
-				echo $image;							
+				echo $image;	
+							
 				if (is_array($gallery) && count($gallery) > 0) {					
 					$gallery_id = $gallery[0];
 					$img_gallery =  wp_get_attachment_image( $gallery_id, 'woocommerce_thumbnail', false, array('class' => 'first-gallery-img') );
+					if (empty($img_gallery)){
+						$img_gallery = wp_get_attachment_image( $thum_id, 'woocommerce_thumbnail', false, array('class' => 'first-gallery-img' ));
+					}
 				} else {
 					if ( !empty($thum_id) ) {
-				$img_gallery = wp_get_attachment_image( $thum_id, 'woocommerce_thumbnail', false, array('class' => 'first-gallery-img' ));				
+					$img_gallery = wp_get_attachment_image( $thum_id, 'woocommerce_thumbnail', false, array('class' => 'first-gallery-img' ));				
 				} elseif ( $parent_id ) {
 					$parent_product = wc_get_product( $parent_id );
 					if ( $parent_product ) {						
@@ -1227,10 +1236,10 @@ function filter_diamond_by_att() {
 		$queried_object = 'term_'.$shape_id;
 		if( get_field('lvc_banner',$queried_object) ):			
 			$lvc_banner =  lvc_banner($queried_object);
-		else: $lvc_banner =  lvc_banner('term_474');
+		else: $lvc_banner =  lvc_banner('term_467');
 	endif;
 	} 	else {
-		$lvc_banner =  lvc_banner('term_474');
+		$lvc_banner =  lvc_banner('term_467');
 	}	
 	
 
