@@ -37,12 +37,35 @@ class ALT_Product_Swatches_Frontend {
                 $class_attributes = (count($attributes) == 1) ? ' has-one-attribute' : ' has-multi-attributes';
                 $html = '<div class="alt-colorswatches-wrapper'.$class_attributes.'" data-url="'. rtrim(get_permalink($product->get_id()), '/') .'" data-product_name="'. esc_attr($product->get_slug()).'">';
                 foreach( $attributes as $attribute_name => $attribute ) {
-                    if( ! empty($attribute->get_variation()) && $attribute->is_taxonomy() ) {
+                    if( ! empty($attribute->get_variation()) ) {
                         $name  = wc_attribute_label( $attribute->get_name(), $product );
-                        $terms = $attribute->get_terms();
+
+                        if( $attribute->is_taxonomy() ) {
+                            $terms = $attribute->get_terms();
+                            $attr = $this->get_tax_attribute( $attribute_name );
+                        }else {
+                            $value_array = $attribute->get_options();
+                            $array = array();
+
+                            foreach ($value_array as $key => $value) {
+                                $array[] = array(
+                                    'term_id' => $key,
+                                    'taxonomy' => $attribute_name,
+                                    'name' => trim($value),
+                                    'slug' => trim($value),
+                                    'is_taxonomy' => false
+                                );
+                            }
+                            $terms = json_decode(json_encode($array), FALSE);
+                            $attr = new stdClass();
+                            $attr->attribute_type = $attribute;
+                            $attr->attribute_name = $attribute_name;
+                            $attr->attribute_type = 'select';
+                        }
+                        
 
                         $selected = isset($attributes_selected[$attribute_name]) ? $attributes_selected[$attribute_name] : '';
-                        $attr = $this->get_tax_attribute( $attribute_name );
+                        
                         $style = get_option('attribute_style_'.$attribute->get_id());
 
                         ob_start();

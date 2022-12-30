@@ -23,12 +23,10 @@
                         echo $this->get_item('carat_weight');
                     }?>
 
-
-
                     <div class="altm-facewp-box facewp-custom" data-label="Price">
                         <div class="fs-wrap">
                             <div class="filterBy_label">Price</div>
-                            <div class="altm-facewp-dropdown hidden">
+                            <div class="altm-facewp-dropdown alt-hidden">
                                 <?php echo do_shortcode( '[facetwp facet="product_price"]' ); ?>
                             </div>
                         </div>

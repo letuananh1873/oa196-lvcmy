@@ -1251,7 +1251,7 @@ jQuery(document).ready(function ($) {
         this.showChildPanel
       );
       $(document).on("click", ".altm-apply-filter", this.submit);
-
+      $(document).on("click", ".facetwp-facet-product_price .alt-radio:not(.disabled)", this.clickPrice);
       $(document).on("click", ".altm-filter-sort-item", this.triggerSort);
 
       $(document).ajaxComplete(this.updatePanel);
@@ -1267,6 +1267,16 @@ jQuery(document).ready(function ($) {
 
       this.loadSortBy();
       this.scrollBar();
+    },
+
+    clickPrice: function(e) {
+      e.preventDefault();
+
+      var _this = jQuery(this);
+      jQuery('.facetwp-facet-product_price .alt-radio:not(.disabled)').not(_this).removeClass('checked');
+      
+      _this.toggleClass('checked');
+      console.log("clickPrice");
     },
 
     faceWPLoaded: function () {
@@ -1418,8 +1428,7 @@ jQuery(document).ready(function ($) {
 
       _this.prop("disabled", true);
       jQuery(".altm-filter-panel-container")
-        .addClass("has-filtering")
-        .block({
+        .addClass("has-filtering").block({
           message: null,
           overlayCSS: {
             background: "#fff",
@@ -1427,6 +1436,11 @@ jQuery(document).ready(function ($) {
           },
           ignoreIfBlocked: true,
         });
+
+        var elPrice = jQuery(".facetwp-facet-product_price .alt-radio.checked");
+        if( elPrice.length > 0 ) {
+          jQuery('.filterByWrapShop .facetwp-radio[data-value="' + elPrice.attr('data-value') + '"]').trigger('click');
+        }
 
       FWP.refresh();
       //altFilterMobile._faceWPRefresh();
@@ -1731,7 +1745,7 @@ jQuery(document).ready(function ($) {
             console.log(wrapper.attr("data-product_name"));
             url = url + "-" + varation_slug.join("-") + "/";
 
-            //item.find("a").attr("href", url); // disable pretty_url
+            //item.find("a").attr("href", url);
           }
 
           console.log(variation);
@@ -2100,7 +2114,7 @@ jQuery(document).ready(function ($) {
         url = url + "-" + varation_slug.join("-") + "/";
 
         if (altSingleProuct.isCLick) {
-          //history.pushState({}, "", url); // disable pretty_url
+          //history.pushState({}, "", url);
         }
       });
 
