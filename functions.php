@@ -28,7 +28,13 @@ define( 'ASTRA_THEME_URI', trailingslashit( esc_url( get_template_directory_uri(
 define( 'ASTRA_EXT_MIN_VER', '2.0.0' );
 
 require_once ASTRA_THEME_DIR . 'func-custom/alt-functions.php';
+require_once ASTRA_THEME_DIR . 'func-custom/alt-swatches.php';
+require_once ASTRA_THEME_DIR . 'shortcode/elementor.php';
 require_once ASTRA_THEME_DIR . 'func-custom/alt-product-bulk-price.php';
+require_once ASTRA_THEME_DIR . 'func-custom/alt-gird-layout.php';
+require_once ASTRA_THEME_DIR . 'func-custom/alt-gift-box.php';
+
+
 /**
  * Setup helper functions of Astra.
  */
@@ -1608,6 +1614,9 @@ function list_taxonomy_custom_taxonomy() {
 		'designer_collections' => 'Designer Collections',
 		'material' => 'Material',
 		'occasions' => 'Occassion',
+		'design' => 'Design',
+        'price' => 'Price',
+        'diamond-shape' => 'Diamond Shape'
 	);
 }
 
@@ -1849,4 +1858,3 @@ add_filter( 'woocommerce_product_export_product_column_short_description', 'chan
 function change_short_description( $value, $product ) {   
 	return html_entity_decode(strip_tags($product->short_description));
 }
-
