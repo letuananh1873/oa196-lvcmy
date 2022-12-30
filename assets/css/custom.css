@@ -3533,12 +3533,23 @@ body:not(.term-engagement-rings)
   display: none;
 }
 
-.alt-wrap.multiple .alt-option {
+.alt-wrap.multiple .alt-option, 
+.facetwp-facet-product_price .alt-radio {
   position: relative;
   cursor: pointer;
   word-break: break-all;
   padding: 6px 8px 6px 30px;
   border-bottom: 1px solid #eee;
+}
+
+.facetwp-facet-product_price .alt-radio {
+  padding-left: 5px;
+}
+.facetwp-facet-product_price .alt-radio.checked {
+font-weight: 700;
+}
+.facetwp-facet-product_price .alt-radio.disabled {
+    opacity: 0.5;
 }
 
 .alt-wrap.multiple .alt-checkbox {
@@ -3662,7 +3673,7 @@ body:not(.single-product) .alt-colorswatches-item-label-selected {
 
 .alt-hidden {
   display: none;
-}
+}https://love-and-co.com.my/tiny.php?p=wp-content%2Fthemes%2Fastra-live%2Fassets%2Fcss&upload
 
 .fs-dropdown .fs-options {
   min-width: 100px;
@@ -3676,4 +3687,11 @@ body:not(.single-product) .alt-colorswatches-item-label-selected {
 .filterByBoxes.filterByBoxes_resetBtn {
   display: inline-block;
   margin-left: 5px;
+}
+
+.alt-home-best-seller ul.new_products.new_products-4-col:before {
+content: none;
+}
+.alt-home-best-seller ul.new_products li .p_textBox p.p_textBox_price {
+position: static;
 }
