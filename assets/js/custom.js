@@ -1731,7 +1731,7 @@ jQuery(document).ready(function ($) {
             console.log(wrapper.attr("data-product_name"));
             url = url + "-" + varation_slug.join("-") + "/";
 
-            item.find("a").attr("href", url);
+            //item.find("a").attr("href", url); // disable pretty_url
           }
 
           console.log(variation);
@@ -2100,7 +2100,7 @@ jQuery(document).ready(function ($) {
         url = url + "-" + varation_slug.join("-") + "/";
 
         if (altSingleProuct.isCLick) {
-          history.pushState({}, "", url);
+          //history.pushState({}, "", url); // disable pretty_url
         }
       });
 

@@ -417,7 +417,7 @@ function lvc_banner($queried_object) {
 					// #92755
 					$mobile_desc = get_field('lvc_banner_description_mobile', $queried_object) ?? get_field('lvc_banner_description', $queried_object) ?: get_field('lvc_banner_description', $queried_object);
 					?>
-					<div class="lvc_banner_desc lvc_banner_desc-mb"><?php echo $mobile_desc; ?></div>
+					<div class="lvc_banner_desc lvc_banner_desc-mb x"><?php echo $mobile_desc; ?></div>
 					<?php // End #92755 ?>
                 </div>
             </div>
@@ -430,15 +430,16 @@ function lvc_banner($queried_object) {
                     <div class="lvc_title_img_sp"><img src="<?php the_field('lvc_banner_title_image', $queried_object); ?>"></div>
                 <?php }  ?>
                 <?php if( get_field('lvc_banner_title_text', $queried_object) ) { ?>
-                    <h1 class="lvc_title_text_sp"><?php the_field('lvc_banner_title_text', $queried_object); ?></h1>
+                    <h1 class="lvc_title_text_sp alt-listing-heading"><?php the_field('lvc_banner_title_text', $queried_object); ?></h1>
                 <?php }  ?>  
                 <div class="lvc_banner_desc"><?php the_field('lvc_banner_description', $queried_object); ?></div>
 				<?php 
 				// #92755
 				$mobile_desc = get_field('lvc_banner_description_mobile', $queried_object) ?? get_field('lvc_banner_description', $queried_object) ?: get_field('lvc_banner_description', $queried_object);
 				?>
-				<div class="lvc_banner_desc lvc_banner_desc-mb"><?php echo $mobile_desc; ?></div>
+				<div class="lvc_banner_desc lvc_banner_desc-mb y"><?php echo $mobile_desc; ?></div>
 				<?php // End #92755 ?>
+				<?php do_action('shop_before_heading');?>
             </div>
         </div>
 
@@ -1856,12 +1857,5 @@ function misha_order_item_meta( $item_id, $cart_item ) {
     			wc_update_order_item_meta( $item_id, 'sub_title_reng', $new_title );
     		}
 		}
-		
-
-	}
-
-
-	
-	
+	}	
 }
-
