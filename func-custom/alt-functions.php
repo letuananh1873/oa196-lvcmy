@@ -243,13 +243,6 @@ class ALT_WC_Attribute_Pretty_URL {
             $pretty_urls = get_post_meta($wp_query->queried_object->ID, '_pretty_urls', true);
             $pretty_urls = empty($pretty_urls) ? [] : $pretty_urls;
 
-            if( alt_is_debug() ) {
-                echo 'VÀO ĐÂY KHÔNG?';
-                echo '<pre>';
-                print_r($pretty_urls);
-                echo '</pre>';
-            }
-
             if( ! isset($pretty_urls[$wp_query->query['name']]) ) {
                 $pretty_urls[$wp_query->query['name']] = $variations;
                 update_post_meta($wp_query->queried_object->ID, '_pretty_urls', $pretty_urls);
@@ -348,19 +341,16 @@ class ALT_FaceWP_Filter {
      * @since 13/05
      */
     function display() {
-        if( isset($_GET['alttoday']) ) {
-            echo 'alt-function line 193';
-
-        } ?>
-    
-            <?php include_once get_template_directory() .'/func-custom/alt-functions/html-facewp-filter.php';?>
-
-        <?php
+        $file = get_template_directory() .'/func-custom/alt-functions/html-facewp-filter.php';
+        if( file_exists($file) ) {
+            include_once $file;
+        }else {
+            echo 'Filter exists';
+        }
     }
 
     function get_item($name) {
         $facet = FWP()->helper->get_facet_by_name( $name );
-
         return sprintf('<div class="altm-facewp-box" data-label="%s">%s</div>', $facet['label_any'], do_shortcode( '[facetwp facet="' . $name . '"]' ));
     }
 }
@@ -389,6 +379,7 @@ class ALT_Single_Product_Layout {
 
         add_filter( 'yith_wcwl_remove_from_wishlist_label', array( $this, 'remove_text_added_text' ) );
         add_filter( 'woocommerce_product_tabs', array( $this, 'woocommerce_product_tabs' ), 99, 1 );
+        add_action('wp_enqueue_scripts', array( $this, 'load_js') );
     }
 
     public function show_book_appointment() {
@@ -468,7 +459,18 @@ class ALT_Single_Product_Layout {
 	}
 
     public function delivery_tab() {
-        echo do_shortcode('[elementor-template id="53412"]');
+        echo do_shortcode('[elementor-template id="149134"]');
+    }
+
+    public function load_js() {
+        if( is_single() ) {
+            $my_css_ver = '2.3.4';
+            wp_enqueue_style( 'owl.carousel', get_template_directory_uri() .'/assets/css/owl.carousel.min.css', false,   $my_css_ver );
+            wp_enqueue_style( 'owl.theme.default', get_template_directory_uri() .'/assets/css/owl.theme.default.min.css', false,   $my_css_ver );
+
+            
+            wp_enqueue_script( 'owl.carousel', get_template_directory_uri() .'/assets/js/owl.carousel.min.js', array(), $my_js_ver );
+        }
     }
 }
 
