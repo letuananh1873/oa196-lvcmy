@@ -1,4 +1,11 @@
 jQuery(document).ready(function ($) {
+
+  jQuery(window).load(function() {
+    if( jQuery('#alt-main-appointment form.alt-form-processing').length > 0 ) {
+        jQuery('#alt-main-appointment form.alt-form-processing').removeClass('alt-form-processing');
+    }
+  });
+
   $(window).scroll(function () {
     var scroll = $(window).scrollTop();
 

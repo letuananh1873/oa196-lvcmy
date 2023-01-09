@@ -1858,3 +1858,17 @@ add_filter( 'woocommerce_product_export_product_column_short_description', 'chan
 function change_short_description( $value, $product ) {   
 	return html_entity_decode(strip_tags($product->short_description));
 }
+
+add_action('wp_footer', function() {
+	?>
+	<script>
+		const formMainAppointment = document.getElementById("alt-main-appointment");
+		if( formMainAppointment ) {
+			var formMain = document.querySelector("#alt-main-appointment form");
+			formMain.setAttribute('autocomplete', 'off');
+			formMain.setAttribute('role', 'presentation');
+			formMain.classList.add('alt-form-processing');
+		}
+	</script>
+	<?php
+});
